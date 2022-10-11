@@ -13,4 +13,17 @@ class Fibonacci:
 #write a method in this class that returns the sum of elements in the array (or list as you call it)
 #it sums the array recursively by adding the first element to the function call of the array without the first element
 class ArraySummer:
-   pass
+   def summ(self, arr):
+      if len(arr) == 1:
+         return arr[0]
+      else:
+         m = (len(arr) - 1)//2
+         left_arr = self.copy_arr(arr, 0, m)
+         right_arr = self.copy_arr(arr, m, (len(arr) - 1))
+         return self.summ(self, left_arr) + self.summ(self, right_arr)
+
+   def copy_arr(self, array, start, end):
+      to_return = []
+      for i in range(start, end):
+         to_return.append(array[start + i])
+      return to_return
