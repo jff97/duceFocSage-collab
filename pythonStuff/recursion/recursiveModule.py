@@ -20,10 +20,10 @@ class ArraySummer:
          m = (len(arr) - 1)//2
          left_arr = self.copy_arr(arr, 0, m)
          right_arr = self.copy_arr(arr, m, (len(arr) - 1))
-         return self.summ(self, left_arr) + self.summ(self, right_arr)
+         return self.summ(left_arr) + self.summ(right_arr)
 
    def copy_arr(self, array, start, end):
       to_return = []
       for i in range(start, end):
-         to_return.append(array[start + i])
+         to_return.append(array[i])
       return to_return
