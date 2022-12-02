@@ -79,11 +79,9 @@ function convertExpression(expression) {
          }
       }
       i--;
-      value = parseInt(parsedArr[0].slice(0, i + 1))
-      
-      inputUnitType = parsedArr[0].substring(i + 1, parsedArr.length[0])
-      outputUnitType = parsedArr[1]
-      console.log("value = " + value + ", inputUnitType = " + inputUnitType + ", outputUnitType = " + outputUnitType)
+      value = parseInt(parsedArr[0].slice(0, i + 1).trim())
+      inputUnitType = parsedArr[0].substring(i + 1, parsedArr.length[0]).trim()
+      outputUnitType = parsedArr[1].trim()
       return convertToUnit(value, inputUnitType, outputUnitType)
    } else {
       return "brennan"
@@ -128,6 +126,7 @@ function charIsDigit(char) {
 
 console.log("\ntesting the operator conversion")
 console.log(convertExpression("100ft -> m") + " = 30.48")
+console.log(convertExpression("100 ft     ->     m") + " = 30.48")
 
 
 
