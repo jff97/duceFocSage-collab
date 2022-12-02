@@ -2,10 +2,10 @@
 // types and the number you must multiply one of those units by to get meters
  
 let UNIT_TABLE  = [
-   ["inch",       (1 / 39.3701), ["inch", "inches", "in"]],
-   ["foot",       (1 / 3.28084), ["foot", "feet", "ft"]],
-   ["kilometer",  1000,          ["kilometer", "kilometers", "km"]],
-   ["meter",      1,             ["meter", "meters", "m"]]
+   ["inch",       (1 / 39.3701), ["inch",       "inches",      "in"]],
+   ["foot",       (1 / 3.28084), ["foot",       "feet",        "ft"]],
+   ["kilometer",  1000,          ["kilometer",  "kilometers",  "km"]],
+   ["meter",      1,             ["meter",      "meters",      "m"]]
 ];
 
 
