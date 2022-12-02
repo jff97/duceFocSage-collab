@@ -9,7 +9,7 @@
 
 
 
-// function convertToMeter(number value, string inputUnitType, string outputUnitType) 
+// function convertToUnit(number value, string inputUnitType, string outputUnitType) 
 //    if inputUnitType is meter
 //       then call  and return meterToUnit(value, outputUnitType)
 //    else 
