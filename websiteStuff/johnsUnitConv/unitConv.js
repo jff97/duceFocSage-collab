@@ -63,25 +63,71 @@ function relaxUnitSyntax(possibleUnit, UNIT_TABLE) {
    //unit was not anywhere in the table so it isnt supported
    return "invalid unit"
 }
+//expression is a string of the form 100miles -> meters
+//returns the number of meters in 100 miles as a number
+function convertExpression(expression) {
+   if (isValidExpression(expression)) {
+      parsedArr = expression.split(" -> ")
+      parsedArr[0] = parsedArr[0].trim()
+      parsedArr[1] = parsedArr[1].trim()
+      let i = 0
+      while (i < parsedArr[0].length) {
+         if (charIsDigit(parsedArr[0].charAt(i))) {
+            i++
+         } else {
+            break
+         }
+      }
+      i--;
+      value = parseInt(parsedArr[0].slice(0, i + 1))
+      
+      inputUnitType = parsedArr[0].substring(i + 1, parsedArr.length[0])
+      outputUnitType = parsedArr[1]
+      console.log("value = " + value + ", inputUnitType = " + inputUnitType + ", outputUnitType = " + outputUnitType)
+      return convertToUnit(value, inputUnitType, outputUnitType)
+   } else {
+      return "brennan"
+   }
+}
+
+function isValidExpression(expression) {
+   if (!expression.includes(" -> ")) {
+      return false
+   } else if (!charIsDigit(expression.charAt(0))) {
+      console.log(expression.charAt(0))
+      expression = expression.trim()
+      console.log("0 not digit")
+      return false
+   } else {
+      return true
+   }
+}
+
+function charIsDigit(char) {
+   if (char >= '0' && char <= '9') {
+      return true
+   } else {
+      return false
+   }
+}
 
 
 
 /////////////////////////////////////////////
 //driver
 
-console.log("testing original units in table")
-console.log(convertToUnit(200, "in", "km") + " = 0.00507" )
-console.log(convertToUnit(12, "incHes", "feet") + " = 1")
-console.log(convertToUnit(5, "m", "feet") + " = 16.4042")
+// console.log("testing original units in table")
+// console.log(convertToUnit(200, "in", "km") + " = 0.00507" )
+// console.log(convertToUnit(12, "incHes", "feet") + " = 1")
+// console.log(convertToUnit(5, "m", "feet") + " = 16.4042")
 
-console.log("\ntesting addition of new units")
-console.log("adding ")
-UNIT_TABLE = addUnit(UNIT_TABLE, "mile", 1609.34, ["mile", "miles", "mi"])
-console.log(convertToUnit(200, "m", "mi") + " = 0.124274")
-console.log(convertToUnit(200, "", "") + " = ")
-console.log(convertToUnit(200, "", "") + " = ")
-console.log(convertToUnit(200, "", "") + " = ")
-console.log(convertToUnit(200, "", "") + " = ")
-console.log(convertToUnit(200, "", "") + " = ")
-console.log(convertToUnit(200, "", "") + " = ")
+// console.log("\ntesting addition of new units")
+// console.log("adding ")
+// UNIT_TABLE = addUnit(UNIT_TABLE, "mile", 1609.34, ["mile", "miles", "mi"])
+// console.log(convertToUnit(200, "m", "mi") + " = 0.124274")
+
+console.log("\ntesting the operator conversion")
+console.log(convertExpression("100ft -> m") + " = 30.48")
+
+
 
