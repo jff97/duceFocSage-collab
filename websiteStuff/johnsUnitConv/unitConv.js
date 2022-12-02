@@ -4,13 +4,14 @@
 let UNIT_TABLE  = [
    ["inch", (1 / 39.3701), ["inch", "inches", "in"]],
    ["foot", (1 / 3.28084), ["foot", "feet", "ft"]],
-   ["kilometer", 1000, ["kilometer", "kilometers", "km"]]
+   ["kilometer", 1000, ["kilometer", "kilometers", "km"]],
+   ["meter", 1, ["meter", "meters", "m"]]
 ];
 
 
 function convertToUnit(value, inputUnitType, outputUnitType) {
-   //inputUnitType = relaxUnitSyntax(inputUnitType, UNIT_TABLE)
-   //outputUnitType = relaxUnitSyntax(outputUnitType, UNIT_TABLE)
+   inputUnitType = relaxUnitSyntax(inputUnitType, UNIT_TABLE)
+   outputUnitType = relaxUnitSyntax(outputUnitType, UNIT_TABLE)
    if (inputUnitType === "meter") {
       return meterToUnit(value, outputUnitType)
    } else {
@@ -41,7 +42,7 @@ function getToMeterFac(nonMeterUnitType, UNIT_TABLE) {
 //    [unitType, toMeterFac]
 //    return the updated array
 function addUnit(UNIT_TABLE, unitType, toMeterFac, allowedAlternatives) {
-   let changedUNIT_TABLE = UNIT_TABLE.push([unitType, toMeterFac, allowedAlternatives])
+   let changedUNIT_TABLE = UNIT_TABLE.concat([[unitType, toMeterFac, allowedAlternatives]])
    return changedUNIT_TABLE
 }
 //takes in a string corresponding to a unchecked unit
@@ -67,10 +68,20 @@ function relaxUnitSyntax(possibleUnit, UNIT_TABLE) {
 
 /////////////////////////////////////////////
 //driver
-//alert(convertToUnit(2000, "inch", "kilometer"))
-//alert(getToMeterFac("inch", UNIT_TABLE))
-//alert(relaxUnitSyntax("INCH", UNIT_TABLE)
+
+console.log("testing original units in table")
+console.log(convertToUnit(200, "in", "km") + " = 0.00507" )
+console.log(convertToUnit(12, "incHes", "feet") + " = 1")
+console.log(convertToUnit(5, "m", "feet") + " = 16.4042")
+
+console.log("\ntesting addition of new units")
+console.log("adding ")
 UNIT_TABLE = addUnit(UNIT_TABLE, "mile", 1609.34, ["mile", "miles", "mi"])
-//alert(relaxUnitSyntax("mi", UNIT_TABLE))
-alert(convertToUnit(1, "kilometer", "inch"))
-alert(convertToUnit(1, "mi", "inch"))
+console.log(convertToUnit(200, "m", "mi") + " = 0.124274")
+console.log(convertToUnit(200, "", "") + " = ")
+console.log(convertToUnit(200, "", "") + " = ")
+console.log(convertToUnit(200, "", "") + " = ")
+console.log(convertToUnit(200, "", "") + " = ")
+console.log(convertToUnit(200, "", "") + " = ")
+console.log(convertToUnit(200, "", "") + " = ")
+
