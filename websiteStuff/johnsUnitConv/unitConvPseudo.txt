@@ -1,0 +1,40 @@
+// make some sort of 2 dimensional array (table) with all the values of possible unit 
+// types and the number you must multiply one of those units by to get meters
+//  [
+//  ["inch", (1 / 39.3701)],
+//  ["foot", (1 / 3.28084)],
+//  ["kilometer", 1000],
+//  ["anyUnit", 42069]
+//  ]
+
+
+
+// function convertToUnit(number value, string inputUnitType, string outputUnitType) 
+//    if inputUnitType is meter
+//       then call  and return meterToUnit(value, outputUnitType)
+//    else 
+//       then the inputUnitType isnt meter so change it to meter and change value to reflect this
+//       toMeterFactor = call to getToMeterFac(inputUnitType)
+//       value = value * toMeterFactor
+//       then just call meterToUnit
+//       call  and return meterToUnit(value, "meter", outputUnitType)
+
+
+// function meterToUnit(number value, string outputUnitType)
+//    value is guarenteed to be in meters at this point
+//    convert the value from meters to a value in one of the outputUnitTypes
+//    return value / getToMeterFac(outputUnitType)
+
+
+// function getToMeterFac(string nonMeterUnitType)
+//    find the row in the 2 dimensional array (table) where the first column matches nonMeterUnitType
+//    return the value from the second column of that row (conversion number)
+
+
+// /
+// optional functions that are nice
+
+// function addUnit(2dArray unitTable,string unitType number toMeterFac)
+//    add a new row to the 2dArray (table) of the form
+//    [unitType, toMeterFac]
+//    return the updated array
