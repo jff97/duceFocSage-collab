@@ -14,6 +14,6 @@ def test_sum():
    print(dylan.summ([0, 5, 7, 8, 4, 2]))
 
 #executed lines start here
-#test_factorial(0, 6)
+test_factorial(0, 6)
 test_sum()
 #executed lines end here
