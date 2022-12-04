@@ -160,16 +160,8 @@ class UnitConverter {
          return left + right
       } else if (operator == "-") {
          return left - right
-      } else if (operator == "*") {
-         return left * right
       } else if (operator == "%") {
          return left % right
-      } else if (operator == "/") {
-         if (right == 0) {
-            return "division by 0"
-         } else {
-            return left / right
-         }
       } else {
          return "operator not supported"
       }
