@@ -5,9 +5,38 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Document</title>
+   <link rel="stylesheet" href="css/unitConv.css">
 </head>
 <body>
-   <script src="unitConvUtil.js"></script>
-   <script src="unitConvDriver.js"></script>
+   <div id="unitContainer">
+      <div id="threeBoxContainer">
+         threeBoxContainer<br>
+         <button onclick="threeBoxConvert()">Convert</button>
+         <input type="text" id="threeBoxInputValue" name="inputValue" placeholder="input number">
+         <input type="text" id="threeBoxInputUnitType" name="inputUnitType" placeholder="input unit">
+         <input type="text" id="threeBoxOutputUnitType" name="threeBoxOutputUnitType" placeholder="desired unit">
+         <span id="threeBoxOutput">
+            answer will appear here
+         </span>
+      </div>
+      <div id="arrowContainer">
+         arrowContainer<br>
+         <button onclick="arrowConvert()">Convert</button>
+         <input type="text" id="arrowExpression" name="arrowExpression" placeholder="xunit -> desired unit">
+         <span id="arrowOutput">
+            answer will appear here
+         </span>
+      </div>
+      <div id="mathContainer">
+         mathContainer<br>
+         <button onclick="mathConvert()">Convert</button>
+         <input type="text" id="mathExpression" name="mathExpression" placeholder="xunit operator yunit">
+         <span id="mathOutput">
+            answer will appear here
+         </span>
+      </div>
+   </div>
+   <script src="javascript/unitConverter.js"></script>
+   <script src="javascript/unitConvDriver.js"></script>
 </body>
 </html>
