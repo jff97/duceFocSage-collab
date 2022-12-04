@@ -1,0 +1,12 @@
+#unitContainer {
+   background-color: grey;
+   width: 100%;
+}
+#unitContainer > div {
+   box-sizing: border-box;
+   border: 1px solid black;
+   width: 50%;
+   margin-left: 25%;
+   height: 8vh;
+   background-color: cadetblue;
+}
