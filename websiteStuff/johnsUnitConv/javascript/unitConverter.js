@@ -51,28 +51,36 @@ class UnitConverter {
       }
    }
 
+
    convertMath(expression) {
-      let expressionArr = expression.split(' ')
-      for (let i = 0; i < expressionArr; i++) {
-         expressionArr[i] = expression[i].trim()
-      }
-      if (this.#isValidMathExpression(expressionArr)) {
-         let leftSide = this.#splitLabeledValue(expressionArr[0])
-         let leftVal = leftSide[0]
-         let leftUnit = leftSide[1]
+      let parsedExp = this.#parseInput(expression)
 
-         let rightSide = this.#splitLabeledValue(expressionArr[2])
-         let rightVal = rightSide[0]
-         let rightUnit = rightSide[1]
-
+      if (parsedExp != null) {
+         let leftVal = parsedExp[0]
+         let rightVal = parsedExp[1]
+         let leftUnit = parsedExp[2]
+         let rightUnit = parsedExp[3]
+         let operator = parsedExp[4]
+         
          leftVal = this.convertToUnit(leftVal, leftUnit, "meter")
          rightVal = this.convertToUnit(rightVal, rightUnit, "meter")
-         let operator = expressionArr[1]
          let resultVal = this.#doOperator(operator, leftVal, rightVal)
          
          return (this.convertToUnit(resultVal, "meter", leftUnit)).toString() + leftUnit
       } else {
-         return "invalid math expression"
+         return null
+      }
+   }
+
+   #parseInput(input) {
+      input = input.replace(/ /g, '')
+      input = input.toLowerCase()
+      var regex = /(-?\d+\.?\d*)\s*([a-zA-Z]+)\s*([+\-%])\s*(-?\d+\.?\d*)\s*([a-zA-Z]+)/;
+      var match = input.match(regex);
+      if (match === null) {
+         return null
+      } else {
+         return [match[1], match[4], match[2], match[5], match[3]];
       }
    }
 
@@ -117,15 +125,6 @@ class UnitConverter {
          console.log(expression.charAt(0))
          expression = expression.trim()
          console.log("0 not digit")
-         return false
-      } else {
-         return true
-      }
-   }
-   #isValidMathExpression(expressionArr) {
-      if (expressionArr.length != 3) {
-         return false
-      } else if (parseInt(expressionArr[0]) == NaN || parseInt(expressionArr[2] == NaN)) {
          return false
       } else {
          return true
