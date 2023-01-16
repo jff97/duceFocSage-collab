@@ -4,8 +4,8 @@ class UnitConverter {
 
    constructor() {
       this.#UNIT_TABLE = [
-         ["inch",       (1 / 39.3701), ["inch",       "inches",      "in"]],
-         ["foot",       (1 / 3.28084), ["foot",       "feet",        "ft"]],
+         ["inch",       (1 / 39.3700787402), ["inch",       "inches",      "in"]],
+         ["foot",       (1 / 3.2808399), ["foot",       "feet",        "ft"]],
          ["kilometer",  1000,          ["kilometer",  "kilometers",  "km"]],
          ["meter",      1,             ["meter",      "meters",      "m"]]
       ];
@@ -75,8 +75,8 @@ class UnitConverter {
    #parseInput(input) {
       input = input.replace(/ /g, '')
       input = input.toLowerCase()
-      var regex = /(-?\d+\.?\d*)\s*([a-zA-Z]+)\s*([+\-%])\s*(-?\d+\.?\d*)\s*([a-zA-Z]+)/;
-      var match = input.match(regex);
+      let pattern = /^\s*([+\-\.\d]+)\s*([a-zA-Z]+)\s*([+\-\%])\s*([+\-\.\d]+)\s*([a-zA-Z]+)\s*$/;
+      var match = input.match(pattern)
       if (match === null) {
          return null
       } else {
