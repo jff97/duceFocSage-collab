@@ -37,7 +37,7 @@ function mathConvert(type) {
       let converter = new UnitConverter()
       let output = converter.convertMath(inputExpression)
       if (output != null) {
-         document.getElementById('mathOutput').innerHTML = myRound(output)
+         document.getElementById('mathOutput').innerHTML = output
       } else {
          document.getElementById('mathOutput').innerHTML = "invalid math expression"
       }
@@ -45,26 +45,3 @@ function mathConvert(type) {
       document.getElementById('mathOutput').innerHTML = "fill input box"
    }
 }
-function myRound(numUnit) {
-   let decimalPlaces = 10
-   let tolerance = .0000001
-   
-   let val = numUnit.match(/[0-9]+.?[0-9]+/)
-   let unit = numUnit.match(/[a-zA-Z]+/)
-
-   let factor = Math.pow(10, decimalPlaces)
-   let difference = Math.abs(Math.round(val) - val)
-
-   if (difference <= tolerance) {
-      val = Math.round(val * factor) / factor
-      return val + unit + "l"
-   } 
-   return val + unit 
-}
-console.log(myRound("2.9999999units"))
-console.log(myRound("0.0000001units"))
-console.log(myRound("100000000000.000000000023units"))
-console.log(myRound("100000000000.0000023units"))
-console.log(myRound("100000000000.000001units"))
-
-
