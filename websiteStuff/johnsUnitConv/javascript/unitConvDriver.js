@@ -36,7 +36,11 @@ function mathConvert(type) {
    if (inputExpression != "" ) {
       let converter = new UnitConverter()
       let output = converter.convertMath(inputExpression)
-      document.getElementById('mathOutput').innerHTML = output
+      if (output != null) {
+         document.getElementById('mathOutput').innerHTML = output
+      } else {
+         document.getElementById('mathOutput').innerHTML = "invalid math expression"
+      }
    } else {
       document.getElementById('mathOutput').innerHTML = "fill input box"
    }
