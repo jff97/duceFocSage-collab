@@ -66,10 +66,26 @@ class UnitConverter {
          rightVal = this.convertToUnit(rightVal, rightUnit, "meter")
          let resultVal = this.#doOperator(operator, leftVal, rightVal)
          
-         return (this.convertToUnit(resultVal, "meter", leftUnit)).toString() + leftUnit
+         let result = this.convertToUnit(resultVal, "meter", leftUnit)
+         return (this.specialRound(result, leftUnit, rightUnit)).toString() + leftUnit
       } else {
          return null
       }
+   }
+   specialRound(value, unit1, unit2) {
+      let factor1 = this.getToMeterFac(this.#relaxUnitSyntax(unit1))
+      let factor2 = this.getToMeterFac(this.#relaxUnitSyntax(unit2))
+      let decPlaces
+      if (factor1 > factor2) {
+         //round to how ever many decimal places
+         decPlaces = Math.round(Math.log10(factor1 / factor2))
+         
+      } else {
+         //factor1 is less then factor 2
+         decPlaces = Math.round(Math.log10(factor2 / factor1))
+      }
+      let roundFac = Math.pow(10, decPlaces)
+      return Math.round(value * roundFac) / roundFac
    }
 
    #parseInput(input) {
