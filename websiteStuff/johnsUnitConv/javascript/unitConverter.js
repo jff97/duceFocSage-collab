@@ -20,7 +20,7 @@ class UnitConverter {
       if (inputUnitType === "meter") {
          return this.#meterToUnit(value, outputUnitType)
       } else {
-         let changedValue = value * this.#getToMeterFac(inputUnitType)
+         let changedValue = value * this.getToMeterFac(inputUnitType)
          return this.#meterToUnit(changedValue, outputUnitType)
       }
    }
@@ -87,10 +87,10 @@ class UnitConverter {
    ///////////////////////////////////////////////////////////////
    //all methods below this point are private methods to the class
    #meterToUnit(value, outputUnitType) {
-      return value / this.#getToMeterFac(outputUnitType)
+      return value / this.getToMeterFac(outputUnitType)
    }
    
-   #getToMeterFac(nonMeterUnitType) {
+   getToMeterFac(nonMeterUnitType) {
       for (let i = 0; i < this.#UNIT_TABLE.length; i++) {
          if (this.#UNIT_TABLE[i][0] === nonMeterUnitType) {
             return this.#UNIT_TABLE[i][1]
