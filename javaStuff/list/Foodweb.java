@@ -57,5 +57,6 @@ public class Foodweb {
       String[] myApexList = web1.apexList();
       //this next line uses the toString() method defined above it will print it pretty
       System.out.println(web1);
+      System.out.println(web2);
    }
 }
